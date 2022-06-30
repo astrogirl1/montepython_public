@@ -1028,8 +1028,26 @@ class Data(object):
             elif elem == 'log10fn':
                 self.cosmo_arguments['f_nadm'] = 10**(self.cosmo_arguments[elem])
                 del self.cosmo_arguments[elem]
-            elif elem == 'log10Gamma':
-                self.cosmo_arguments['invtau0_nadm_dg'] = 10**(self.cosmo_arguments[elem])
+            elif elem == 'Gamma_dcdm_wdm':
+                self.cosmo_arguments['Gamma_dcdm_wdm'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]
+            elif elem == 'omega_ini_dcdm2':
+                self.cosmo_arguments['omega_ini_dcdm2'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]    
+            elif elem == 'Gamma_dcdm_exo':
+                self.cosmo_arguments['Gamma_dcdm_exo'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]   
+            elif elem == 'epsilon_dcdm_wdm':
+                self.cosmo_arguments['epsilon_dcdm_wdm'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]
+            elif elem == 'photon_energy':
+                self.cosmo_arguments['photon_energy'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]
+            elif elem == 'decay_fraction':
+                self.cosmo_arguments['decay_fraction'] = self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]
+            elif elem == 'test_param':
+                test_param = self.cosmo_arguments[elem]
                 del self.cosmo_arguments[elem]
             elif elem == 'w0wa':
                 self.cosmo_arguments['wa_fld'] = self.cosmo_arguments[elem] - self.cosmo_arguments['w0_fld']

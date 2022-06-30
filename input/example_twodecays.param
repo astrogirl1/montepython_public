@@ -1,0 +1,81 @@
+#------Experiments to test (separated with commas)-----
+# To see all the available ones, please look in the
+# montepython/likelihoods folder. Every folder there is a valid likelihood to
+# test.
+data.experiments=['fake_planck_bluebook']
+#data.experiments=['wmap','spt']
+
+#------ Parameter list -------
+# data.parameters[class name] = [mean, min, max, 1-sigma, scale, role]
+# - if min max irrelevant, put to -1 or None (if you want a boundary of -1, use -1.0)
+# - if fixed, put 1-sigma to 0
+# - if scale irrelevant, put to 1, otherwise to the appropriate factor
+# - role is either 'cosmo', 'nuisance' or 'derived'
+
+
+# Cosmological parameters list
+#data.parameters['omega_b'] 	= [2.249,  -1,-1, 0.016, 0.01,'cosmo']
+#data.parameters['omega_cdm'] 	= [0.1120, -1,-1, 0.0016,1,   'cosmo']
+#data.parameters['n_s']       	= [0.963,  -1,-1, 0.004, 1,   'cosmo']
+#data.parameters['A_s']       	= [2.42,   -1,-1, 0.038, 1e-9,'cosmo']
+#data.parameters['h']         	= [0.703,  -1,-1, 0.0065,1,   'cosmo']
+#data.parameters['tau_reio']    	= [0.085,  -1,-1, 0.0044,1,   'cosmo']
+data.parameters['Gamma_dcdm_exo']    = [ 17.7,   None, None,      0.015, 1, 'cosmo']
+data.parameters['Gamma_dcdm_wdm']    = [ 3,     None, None,      0.015, 1, 'cosmo']
+data.parameters['epsilon_dcdm_wdm']  = [ 0.0067,      0.005, 0.008,      0.0000015, 1, 'cosmo']
+
+##Use .cosmo_arguments when need a variable to be constant otherwise use .parameters
+##These are all the parameters for our decays as needed.
+
+data.cosmo_arguments['omega_b'] 	= 0.02249
+data.cosmo_arguments['omega_cdm'] 	= 0.0001
+data.cosmo_arguments['n_s']       	= 0.963
+data.cosmo_arguments['A_s']       	= 2.215e-9
+data.cosmo_arguments['H0']         	= 67.70
+data.cosmo_arguments['z_reio']    	= 7.7
+
+data.cosmo_arguments['decay_fraction'] = 1
+data.cosmo_arguments['on the spot'] = 'no'
+data.cosmo_arguments['energy_deposition_function'] = 'DarkAges'
+data.cosmo_arguments['DarkAges_mode'] = 'built_in'
+data.cosmo_arguments['energy_repartition_coefficient'] = 'no_factorization'
+data.cosmo_arguments['DM_mass'] = 500
+data.cosmo_arguments['M_dcdm'] = 1
+data.cosmo_arguments['injected_particle_spectra'] = 'dirac_photon'
+data.cosmo_arguments['injected_particle_branching_ratio'] = 1
+data.cosmo_arguments['photon_energy'] = 0.1
+#data.cosmo_arguments['log10_Gamma_dcdm_exo']    = 1.0025
+#data.cosmo_arguments['log10_Gamma_dcdm_wdm']    = 1.25
+#data.cosmo_arguments['epsilon_dcdm_wdm']  = 0.0067
+data.cosmo_arguments['T_cmb']  = 2.7255
+
+
+data.cosmo_arguments['omega_ini_dcdm2']= 0.1194
+data.cosmo_arguments['omega_ini_dcdm2']= 0.1
+data.cosmo_arguments['N_ur'] = 3.044
+data.cosmo_arguments['test_param'] = 1
+data.cosmo_arguments['N_ncdm'] = 1
+data.cosmo_arguments['m_ncdm'] = 0
+data.cosmo_arguments['evolver'] = 0
+data.cosmo_arguments['recombination'] = 'HyRec'
+data.cosmo_arguments['write warnings'] = 'yes'
+
+
+# Nuisance parameter list, same call, except the name does not have to be a class name
+# For wmap:
+#data.parameters['A_SZ']         = [1,    0, 2,   1, 1,  'nuisance']
+# For SPT
+#data.parameters['SPT_SZ']       = [5.6,  0,-1, 2.5, 1,  'nuisance']
+#data.parameters['SPT_PS']       = [20.4,-1,-1, 2.7, 1, 'nuisance']
+#data.parameters['SPT_CL']       = [5.3, -1,-1, 2.3, 1, 'nuisance']
+
+# Derived parameter list
+#data.parameters['z_reio']       = [0,       -1, -1, 0,1,  'derived']
+data.parameters['Omega_Lambda'] = [0,       -1, -1, 0,1,  'derived']
+
+#------ Mcmc parameters ----
+# Number of steps taken, by default (overwritten by the -N command)
+data.N=10
+# Number of accepted steps before writing to file the chain. Larger means less
+# access to disc, but this is not so much time consuming.
+data.write_step=5
